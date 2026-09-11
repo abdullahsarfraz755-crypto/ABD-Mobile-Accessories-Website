@@ -1,0 +1,121 @@
+.wrapper {
+  position: relative;
+  height: 300vh;
+  background: var(--void);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    height: auto;
+  }
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky {
+    position: relative;
+    height: 80vh;
+  }
+}
+
+.canvasLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  pointer-events: none;
+}
+
+.headWrap {
+  margin-bottom: var(--space-10);
+}
+
+.captions {
+  position: relative;
+  min-height: 7rem;
+  max-width: 420px;
+}
+
+.caption {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+
+.caption.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.captionIndex {
+  font-size: var(--fs-micro);
+  letter-spacing: 0.1em;
+  color: var(--gold-300);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.captionTitle {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-3);
+}
+
+.captionBody {
+  color: var(--ink-70);
+  max-width: 38ch;
+}
+
+.progressRail {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+}
+
+.progressDot {
+  height: 2px;
+  flex: 1;
+  max-width: 46px;
+  background: var(--border-strong);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.progressDot span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--gold-gradient);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.progressDot.active span {
+  width: 100%;
+}
+
+.progressDot.done span {
+  width: 100%;
+}
+
+@media (max-width: 820px) {
+  .wrapper {
+    height: 220vh;
+  }
+  .captionTitle {
+    font-size: var(--fs-h3);
+  }
+}

@@ -1,0 +1,108 @@
+.section {
+  position: relative;
+  padding-block: var(--section-pad-y);
+  background: var(--black);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--fs-body-lg);
+}
+
+.addressLine {
+  color: var(--ink-70);
+}
+
+.addressCity {
+  color: var(--gold-100);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-top: var(--space-2);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.mapCard {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(90% 70% at 30% 20%, rgba(217, 184, 118, 0.09) 0%, transparent 60%),
+    linear-gradient(155deg, var(--charcoal) 0%, var(--graphite) 100%);
+}
+
+.mapCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(245, 243, 238, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 243, 238, 0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.mapPin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.pinIcon {
+  color: var(--gold-300);
+}
+
+.mapNote {
+  font-size: var(--fs-small);
+  color: var(--ink-45);
+  max-width: 28ch;
+}
+
+.hours {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-small);
+  color: var(--ink-70);
+}

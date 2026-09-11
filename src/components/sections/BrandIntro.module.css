@@ -1,0 +1,64 @@
+.section {
+  position: relative;
+  padding-block: var(--section-pad-y);
+  background: var(--void);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.statement {
+  font-size: var(--fs-h1);
+  line-height: 1.15;
+  max-width: 15ch;
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.pillar {
+  display: flex;
+  gap: var(--space-5);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
+}
+
+.pillar:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.pillarIndex {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold-300);
+  flex-shrink: 0;
+  width: 2.4em;
+}
+
+.pillarBody h3 {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--space-2);
+}
+
+.pillarBody p {
+  font-size: var(--fs-small);
+  color: var(--ink-70);
+  max-width: 42ch;
+}

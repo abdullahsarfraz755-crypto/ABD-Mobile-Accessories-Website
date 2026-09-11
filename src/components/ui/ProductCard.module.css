@@ -1,0 +1,137 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lifted);
+}
+
+.mediaWrap {
+  position: relative;
+  padding: var(--space-5);
+}
+
+.media {
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.card:hover .media {
+  transform: scale(1.04);
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 2;
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35em 0.8em;
+  border-radius: var(--radius-full);
+  background: rgba(5, 5, 6, 0.55);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-100);
+  backdrop-filter: blur(6px);
+}
+
+.discount {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 2;
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  padding: 0.35em 0.7em;
+  border-radius: var(--radius-full);
+  background: var(--gold-gradient);
+  color: var(--void);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: 0 var(--space-5) var(--space-5);
+}
+
+.category {
+  font-size: var(--fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+.name {
+  font-size: var(--fs-h4);
+  font-weight: 500;
+}
+
+.desc {
+  font-size: var(--fs-small);
+  color: var(--ink-70);
+  line-height: var(--lh-body);
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: var(--space-3);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gold-100);
+}
+
+.oldPrice {
+  font-size: var(--fs-small);
+  color: var(--ink-45);
+  text-decoration: line-through;
+}
+
+.availability {
+  font-size: var(--fs-micro);
+  color: var(--ink-45);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal-live);
+}
+
+.dot.low {
+  background: var(--signal-low);
+}
+
+.cardLink {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}

@@ -1,0 +1,106 @@
+.section {
+  position: relative;
+  padding-block: var(--section-pad-y);
+  background: var(--black);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  aspect-ratio: 1 / 1.05;
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(120% 100% at 15% 0%, rgba(217, 184, 118, 0.1) 0%, transparent 55%),
+    linear-gradient(155deg, var(--charcoal) 0%, var(--graphite) 100%);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+}
+
+.iconWrap {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-300);
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+
+.card:hover .iconWrap {
+  background: var(--gold-gradient);
+  color: var(--void);
+}
+
+.bgIcon {
+  position: absolute;
+  right: -10%;
+  bottom: -10%;
+  width: 65%;
+  height: 65%;
+  color: var(--ink);
+  opacity: 0.04;
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+
+.card:hover .bgIcon {
+  opacity: 0.07;
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.name {
+  position: relative;
+  font-size: var(--fs-h4);
+  font-weight: 500;
+}
+
+.tagline {
+  position: relative;
+  font-size: var(--fs-small);
+  color: var(--ink-45);
+}
+
+.featuredTag {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  font-size: var(--fs-micro);
+  color: var(--gold-300);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

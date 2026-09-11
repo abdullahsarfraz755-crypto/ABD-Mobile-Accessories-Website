@@ -1,0 +1,157 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.header.scrolled {
+  background: rgba(10, 10, 12, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--border);
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+}
+
+.logoMark {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+.logoSub {
+  display: none;
+  font-family: var(--font-body);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+@media (min-width: 640px) {
+  .logoSub {
+    display: inline;
+  }
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-7);
+}
+
+@media (min-width: 960px) {
+  .nav {
+    display: flex;
+  }
+}
+
+.navLink {
+  position: relative;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--ink-70);
+  white-space: nowrap;
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--gold-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.navLink:hover {
+  color: var(--ink);
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.ctaDesktop {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .ctaDesktop {
+    display: inline-flex;
+  }
+}
+
+.menuBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-full);
+}
+
+@media (min-width: 960px) {
+  .menuBtn {
+    display: none;
+  }
+}
+
+.mobilePanel {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: var(--void);
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--header-h) + var(--space-6)) var(--section-pad-x) var(--space-8);
+  gap: var(--space-8);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.mobileNavLink {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--ink);
+}
