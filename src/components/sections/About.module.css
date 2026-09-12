@@ -1,0 +1,73 @@
+.section {
+  position: relative;
+  padding-block: var(--section-pad-y);
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.statement {
+  font-size: var(--fs-h1);
+  line-height: 1.15;
+  max-width: 16ch;
+}
+
+.body {
+  color: var(--ink-70);
+  font-size: var(--fs-body-lg);
+  max-width: 46ch;
+  margin-top: var(--space-5);
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.pillarIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  border: 1px solid var(--border-strong);
+  color: var(--blue-500);
+}
+
+.pillarBody h3 {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--space-1);
+}
+
+.pillarBody p {
+  font-size: var(--fs-small);
+  color: var(--ink-70);
+}

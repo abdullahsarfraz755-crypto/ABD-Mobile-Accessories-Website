@@ -36,12 +36,12 @@ export function HeroScene({ sectionEl }: HeroSceneProps) {
           <PerspectiveCamera makeDefault fov={38} position={[0, 0.4, 6.2]} />
           <CameraRig sectionEl={sectionEl} reducedMotion={reducedMotion} />
 
-          <ambientLight intensity={0.35} />
-          <directionalLight position={[3, 4, 4]} intensity={1.4} color="#f2dfa8" />
-          <pointLight position={[-4, 1, -2]} intensity={0.6} color="#8ba0c9" />
-          <pointLight position={[0, -1.5, 3]} intensity={0.4} color="#d9b876" />
+          <ambientLight intensity={0.7} />
+          <directionalLight position={[3, 4, 4]} intensity={1.3} color="#ffffff" />
+          <pointLight position={[-4, 1, -2]} intensity={0.5} color="#0b63f6" />
+          <pointLight position={[0, -1.5, 3]} intensity={0.4} color="#a3e635" />
 
-          <fog attach="fog" args={['#0a0a0c', 7, 13]} />
+          <fog attach="fog" args={['#ffffff', 7, 13]} />
 
           <HeroDevice reducedMotion={reducedMotion} />
         </Suspense>

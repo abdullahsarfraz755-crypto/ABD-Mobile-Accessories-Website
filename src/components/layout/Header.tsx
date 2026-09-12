@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react'
-import { Menu, X, MessageCircle } from 'lucide-react'
+import { NavLink } from 'react-router-dom'
+import { Menu, X, ShoppingBag } from 'lucide-react'
 import styles from './Header.module.css'
 import { Button } from '../ui/Button'
-import { whatsappHref } from '../../data/contact'
 
 const NAV_LINKS = [
-  { href: '#categories', label: 'Categories' },
-  { href: '#products', label: 'Products' },
-  { href: '#showcase', label: 'Showcase' },
-  { href: '#gaming', label: 'Gaming' },
-  { href: '#contact', label: 'Contact' },
+  { to: '/', label: 'Home', end: true },
+  { to: '/shop', label: 'Shop' },
+  { to: '/#about', label: 'About' },
+  { to: '/#contact', label: 'Contact' },
 ]
 
 export function Header() {
@@ -30,8 +29,6 @@ export function Header() {
     }
   }, [menuOpen])
 
-  const waHref = whatsappHref()
-
   return (
     <>
       <a href="#main" className="skip-link">
@@ -39,30 +36,35 @@ export function Header() {
       </a>
       <header className={[styles.header, scrolled ? styles.scrolled : ''].filter(Boolean).join(' ')}>
         <div className={['container', styles.inner].join(' ')}>
-          <a href="#top" className={styles.logo} aria-label="ABD Mobile Accessories — home">
+          <NavLink to="/" className={styles.logo} aria-label="ABD Mobile Accessories — home">
             <span className={styles.logoMark}>ABD</span>
             <span className={styles.logoSub}>Mobile Accessories</span>
-          </a>
+          </NavLink>
 
           <nav className={styles.nav} aria-label="Primary">
             {NAV_LINKS.map((link) => (
-              <a key={link.href} href={link.href} className={styles.navLink}>
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.end}
+                className={({ isActive }) =>
+                  [styles.navLink, isActive ? styles.navLinkActive : ''].filter(Boolean).join(' ')
+                }
+              >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </nav>
 
           <div className={styles.actions}>
             <Button
-              as="a"
-              href={waHref ?? '#contact'}
-              target={waHref ? '_blank' : undefined}
-              rel={waHref ? 'noopener noreferrer' : undefined}
-              variant="secondary"
+              as="link"
+              to="/shop"
+              variant="primary"
               className={styles.ctaDesktop}
-              icon={<MessageCircle strokeWidth={1.75} />}
+              icon={<ShoppingBag strokeWidth={1.75} size={17} />}
             >
-              WhatsApp Us
+              Shop Now
             </Button>
             <button
               className={styles.menuBtn}
@@ -80,26 +82,25 @@ export function Header() {
         <div className={styles.mobilePanel} role="dialog" aria-modal="true">
           <nav className={styles.mobileNav} aria-label="Mobile">
             {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.end}
                 className={styles.mobileNavLink}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </nav>
           <Button
-            as="a"
-            href={waHref ?? '#contact'}
-            target={waHref ? '_blank' : undefined}
-            rel={waHref ? 'noopener noreferrer' : undefined}
+            as="link"
+            to="/shop"
             variant="primary"
-            icon={<MessageCircle strokeWidth={1.75} />}
+            icon={<ShoppingBag strokeWidth={1.75} size={17} />}
             onClick={() => setMenuOpen(false)}
           >
-            WhatsApp Us
+            Shop Now
           </Button>
         </div>
       )}

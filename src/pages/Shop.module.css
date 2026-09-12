@@ -1,0 +1,107 @@
+.hero {
+  padding-top: calc(var(--header-h) + var(--space-8));
+  padding-bottom: var(--space-8);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-size: var(--fs-h1);
+  margin-bottom: var(--space-3);
+}
+
+.subtitle {
+  color: var(--ink-70);
+  font-size: var(--fs-body-lg);
+  max-width: 60ch;
+}
+
+.controls {
+  padding-block: var(--space-6);
+}
+
+.searchWrap {
+  position: relative;
+  max-width: 420px;
+  margin-bottom: var(--space-5);
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  translate: 0 -50%;
+  color: var(--ink-45);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.85em 1em 0.85em 2.6em;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-strong);
+  background: var(--white);
+  font-size: var(--fs-small);
+  color: var(--ink);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--blue-500);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  padding: 0.55em 1.1em;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-strong);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--ink-70);
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--blue-500);
+}
+
+.chipActive {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.resultCount {
+  font-size: var(--fs-small);
+  color: var(--ink-45);
+  margin-block: var(--space-5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  padding-bottom: var(--section-pad-y);
+}
+
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  text-align: center;
+  padding-block: var(--space-12);
+  color: var(--ink-45);
+}

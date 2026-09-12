@@ -1,5 +1,4 @@
 .btn {
-  --btn-fg: var(--ink);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -9,40 +8,50 @@
   font-family: var(--font-body);
   font-size: var(--fs-small);
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   border-radius: var(--radius-full);
   white-space: nowrap;
   transition:
     transform var(--dur-fast) var(--ease-out),
     box-shadow var(--dur-base) var(--ease-out),
     border-color var(--dur-base) var(--ease-out),
-    background var(--dur-base) var(--ease-out);
+    background var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
   will-change: transform;
 }
 
 .primary {
-  color: var(--void);
-  background: var(--gold-gradient);
-  box-shadow: 0 12px 30px -12px rgba(217, 184, 118, 0.45);
+  color: var(--white);
+  background: var(--blue-gradient);
+  box-shadow: 0 12px 28px -12px rgba(11, 99, 246, 0.45);
 }
 
 .primary:hover {
-  box-shadow: var(--shadow-glow-gold);
+  box-shadow: var(--shadow-glow-blue);
 }
 
 .secondary {
-  color: var(--ink);
-  background: transparent;
-  border: 1px solid var(--border-strong);
+  color: var(--navy);
+  background: var(--white);
+  border: 1.5px solid var(--border-strong);
 }
 
 .secondary:hover {
-  border-color: var(--border-gold);
-  background: rgba(217, 184, 118, 0.06);
+  border-color: var(--blue-500);
+  background: var(--blue-100);
+}
+
+.accent {
+  color: var(--navy);
+  background: var(--lime-500);
+}
+
+.accent:hover {
+  background: var(--lime-700);
 }
 
 .ghost {
-  color: var(--gold-300);
+  color: var(--blue-500);
   padding-inline: 0.4em;
 }
 
@@ -52,8 +61,9 @@
   left: 0.4em;
   right: 0.4em;
   bottom: -2px;
-  height: 1px;
-  background: var(--gold-gradient);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--lime-500);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--dur-base) var(--ease-out);

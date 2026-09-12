@@ -1,53 +1,56 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  /* Core surfaces */
-  --void: #050506;
-  --black: #0a0a0c;
-  --graphite: #141417;
-  --charcoal: #1c1c20;
-  --surface: #232328;
-  --surface-raised: #2a2a30;
+  /* Core surfaces — white canvas, no black/gold */
+  --white: #ffffff;
+  --surface: #f4f7fc;
+  --surface-raised: #ffffff;
+  --navy: #0b1f3a;
+  --navy-700: #142c50;
 
   /* Borders */
-  --border: rgba(245, 243, 239, 0.08);
-  --border-strong: rgba(245, 243, 239, 0.16);
-  --border-gold: rgba(217, 184, 118, 0.35);
+  --border: rgba(11, 31, 58, 0.09);
+  --border-strong: rgba(11, 31, 58, 0.18);
 
-  /* Gold */
-  --gold-100: #f2dfa8;
-  --gold-300: #d9b876;
-  --gold-500: #b6904f;
-  --gold-900: #5c4a29;
-  --gold-gradient: linear-gradient(135deg, #b6904f 0%, #f2dfa8 45%, #d9b876 100%);
-  --gold-gradient-soft: linear-gradient(135deg, rgba(182, 144, 79, 0.16) 0%, rgba(242, 223, 168, 0.1) 100%);
+  /* Brand — vibrant blue + lime green accent */
+  --blue-100: #e6f0ff;
+  --blue-300: #4f8dff;
+  --blue-500: #0b63f6;
+  --blue-700: #0847b8;
+  --blue-gradient: linear-gradient(135deg, #2f7bff 0%, #0b63f6 55%, #0847b8 100%);
+
+  --lime-300: #d5f56a;
+  --lime-500: #a3e635;
+  --lime-700: #6ea621;
 
   /* Text */
-  --ink: #f5f3ee;
-  --ink-70: rgba(245, 243, 238, 0.72);
-  --ink-45: rgba(245, 243, 238, 0.46);
-  --ink-25: rgba(245, 243, 238, 0.25);
+  --ink: #0b1f3a;
+  --ink-70: rgba(11, 31, 58, 0.72);
+  --ink-45: rgba(11, 31, 58, 0.5);
+  --ink-25: rgba(11, 31, 58, 0.3);
+  --on-dark: #f5f8ff;
+  --on-dark-70: rgba(245, 248, 255, 0.72);
 
-  /* Status (used sparingly — availability, discount badge) */
-  --signal-live: #7fbf8f;
-  --signal-low: #d97b5f;
+  /* Status */
+  --signal-live: #1f9d55;
+  --signal-low: #d9772e;
 
   /* Typography */
-  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Manrope Variable', 'Manrope', -apple-system, sans-serif;
 
-  --fs-hero: clamp(2.8rem, 3.2vw + 1.8rem, 5.6rem);
-  --fs-h1: clamp(2.4rem, 2.2vw + 1.6rem, 3.8rem);
-  --fs-h2: clamp(1.9rem, 1.4vw + 1.4rem, 2.8rem);
-  --fs-h3: clamp(1.4rem, 0.8vw + 1.1rem, 1.9rem);
-  --fs-h4: clamp(1.15rem, 0.4vw + 1rem, 1.35rem);
+  --fs-hero: clamp(2.6rem, 3vw + 1.6rem, 4.8rem);
+  --fs-h1: clamp(2.2rem, 2vw + 1.5rem, 3.4rem);
+  --fs-h2: clamp(1.8rem, 1.3vw + 1.3rem, 2.6rem);
+  --fs-h3: clamp(1.35rem, 0.7vw + 1.1rem, 1.8rem);
+  --fs-h4: clamp(1.1rem, 0.4vw + 1rem, 1.3rem);
   --fs-body-lg: clamp(1.05rem, 0.3vw + 0.95rem, 1.2rem);
   --fs-body: 1rem;
   --fs-small: 0.875rem;
   --fs-micro: 0.75rem;
 
-  --lh-tight: 1.08;
-  --lh-snug: 1.25;
+  --lh-tight: 1.1;
+  --lh-snug: 1.28;
   --lh-body: 1.6;
 
   /* Spacing (8px base) */
@@ -63,20 +66,20 @@
   --space-12: 5rem;
   --space-16: 8rem;
 
-  --section-pad-y: clamp(4.5rem, 6vw, 8rem);
+  --section-pad-y: clamp(4rem, 6vw, 7rem);
   --section-pad-x: clamp(1.25rem, 5vw, 5rem);
   --content-max: 1360px;
 
   /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 14px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
   --radius-lg: 28px;
   --radius-full: 999px;
 
-  /* Shadow */
-  --shadow-card: 0 20px 50px -25px rgba(0, 0, 0, 0.6);
-  --shadow-lifted: 0 30px 80px -30px rgba(0, 0, 0, 0.75);
-  --shadow-glow-gold: 0 0 80px -10px rgba(217, 184, 118, 0.25);
+  /* Shadow — soft, cool-toned, no warm/gold glow */
+  --shadow-card: 0 16px 40px -22px rgba(11, 31, 58, 0.18);
+  --shadow-lifted: 0 24px 60px -24px rgba(11, 31, 58, 0.24);
+  --shadow-glow-blue: 0 0 60px -10px rgba(11, 99, 246, 0.35);
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -85,11 +88,11 @@
   --dur-base: 320ms;
   --dur-slow: 700ms;
 
-  --header-h: 84px;
+  --header-h: 80px;
 }
 
 @media (max-width: 720px) {
   :root {
-    --header-h: 68px;
+    --header-h: 64px;
   }
 }

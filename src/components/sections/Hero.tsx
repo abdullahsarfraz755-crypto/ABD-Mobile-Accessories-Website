@@ -1,11 +1,16 @@
-import { useLayoutEffect, useRef, useState } from 'react'
-import { ArrowRight, MessageCircle } from 'lucide-react'
+import { lazy, Suspense, useLayoutEffect, useRef, useState } from 'react'
+import { ArrowRight } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa6'
 import styles from './Hero.module.css'
 import { Button } from '../ui/Button'
-import { HeroScene } from '../../three/HeroScene'
+import { ScenePoster } from '../../three/ScenePoster'
 import { ensureGsap } from '../../lib/gsap'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
-import { whatsappHref } from '../../data/contact'
+import { whatsappHref, CONTACT } from '../../data/contact'
+
+const HeroScene = lazy(() => import('../../three/HeroScene').then((m) => ({ default: m.HeroScene })))
+import { PRODUCTS } from '../../data/products'
+import { CATEGORIES } from '../../data/categories'
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -13,7 +18,7 @@ export function Hero() {
   const introRef = useRef<HTMLDivElement>(null)
   const [sectionEl, setSectionEl] = useState<HTMLElement | null>(null)
   const reducedMotion = useReducedMotion()
-  const waHref = whatsappHref()
+  const waHref = whatsappHref(`Hello ${CONTACT.brandName}, I'm interested in your accessories.`)
 
   useLayoutEffect(() => {
     setSectionEl(sectionRef.current)
@@ -48,7 +53,9 @@ export function Hero() {
   return (
     <section id="top" ref={sectionRef} className={styles.hero}>
       <div className={styles.canvasLayer}>
-        <HeroScene sectionEl={sectionEl} />
+        <Suspense fallback={<ScenePoster />}>
+          <HeroScene sectionEl={sectionEl} />
+        </Suspense>
       </div>
       <div className={styles.scrim} />
 
@@ -61,44 +68,43 @@ export function Hero() {
               <span>Premium Accessories.</span>
             </span>
             <span className={styles.line}>
-              <span className={styles.lineGold}>Elevated Everyday.</span>
+              <span className={styles.lineAccent}>Smarter Everyday.</span>
             </span>
           </h1>
 
           <div ref={introRef}>
             <p className={styles.subcopy}>
-              Thoughtfully selected mobile and computer accessories for Lahore&rsquo;s students,
-              professionals, and tech lovers — quality you can feel, priced for everyday life.
+              Discover premium mobile accessories designed for your everyday tech.
             </p>
 
             <div className={styles.ctaRow}>
-              <Button as="a" href="#categories" variant="primary" icon={<ArrowRight strokeWidth={1.75} />}>
-                Explore Collection
+              <Button as="link" to="/shop" variant="primary" icon={<ArrowRight strokeWidth={1.75} />}>
+                Shop Products
               </Button>
               <Button
                 as="a"
-                href={waHref ?? '#contact'}
-                target={waHref ? '_blank' : undefined}
-                rel={waHref ? 'noopener noreferrer' : undefined}
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 variant="secondary"
-                icon={<MessageCircle strokeWidth={1.75} />}
+                icon={<FaWhatsapp size={17} />}
               >
-                WhatsApp Us
+                Chat on WhatsApp
               </Button>
             </div>
 
             <div className={styles.stats}>
               <div className={styles.stat}>
-                <span className={styles.statValue}>11+</span>
+                <span className={styles.statValue}>{PRODUCTS.length}+</span>
+                <span className={styles.statLabel}>Curated Products</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statValue}>{CATEGORIES.length - 1}</span>
                 <span className={styles.statLabel}>Categories</span>
               </div>
               <div className={styles.stat}>
-                <span className={styles.statValue}>Lahore</span>
-                <span className={styles.statLabel}>Nishat Colony</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statValue}>In-Store</span>
-                <span className={styles.statLabel}>Easypaisa &amp; JazzCash</span>
+                <span className={styles.statValue}>Fast</span>
+                <span className={styles.statLabel}>WhatsApp Support</span>
               </div>
             </div>
           </div>

@@ -1,5 +1,9 @@
 # PROJECT_STATUS.md — ABD Mobile Accessories Website
 
+## Rebrand (2026-09-12)
+
+The business owner issued a full rebrand/content directive after the initial build: remove the black/gold luxury identity, remove all non-mobile-accessory content (computer accessories, financial services, gaming), switch to a white/blue/lime-green/dark-navy identity matched to the real ABD logo, and replace the placeholder product catalog with the 14 real products and prices supplied. That work is complete — see "Phase progress" below and `DESIGN_SYSTEM.md` / `TODO.md` for specifics. Everything under "Phase 0" through the original "Known issue" section below is preserved as history of the first build; it no longer describes the current visual identity.
+
 ## Phase 0 — Audit (complete)
 
 **Before this session:** working directory was completely empty. No git repo. No Node.js, npm, or Git installed anywhere on the machine.
@@ -40,25 +44,34 @@ Not available / not applicable:
 
 ## Known placeholders (must be replaced by the user before launch)
 
-- **Phone number, WhatsApp number, Google Maps link** — not invented per instructions. Live in `src/data/contact.ts`, clearly marked `PLACEHOLDER`. CTAs are wired but need real values.
-- **Product photography** — no real photos supplied. Product cards use designed placeholder tiles (gradient + category icon), not fake stock/AI photos pretending to be real products. Swap in `src/data/products.ts` (`image` field).
-- **Testimonials** — clearly labeled as sample/placeholder content, not presented as real reviews, per instructions.
+*(Superseded by the 2026-09-12 rebrand — the real WhatsApp number and product catalog are now wired in. Remaining gaps are tracked in `TODO.md`: store address/Maps link, social profile URLs, and photos for the 7 products the owner hasn't supplied images for yet.)*
 
-## Phase progress
+## Phase progress (original build)
 
 - [x] Phase 0 — Project audit
 - [x] Phase 1 — Skills/tools audit
-- [x] Phase 2 — Design direction (see DESIGN_SYSTEM.md)
-- [x] Phase 3 — Site structure/sections (all 11 sections built: Hero, Brand Intro, Categories, Featured Products, 3D Showcase, Services, Why ABD, Gaming, Testimonials, Contact, Footer)
+- [x] Phase 2 — Design direction (superseded — see Rebrand)
+- [x] Phase 3 — Site structure/sections (superseded — see Rebrand)
 - [x] Phase 4 — Motion design (GSAP + Lenis, scroll reveals, magnetic buttons, staggered hero text)
 - [x] Phase 5 — 3D system (procedural studio scene: Hero + dedicated scroll-driven Showcase)
-- [x] Phase 6 — Product data architecture (`src/data/products.ts`)
-- [x] Phase 7 — Responsive design (desktop verified; see "Known issue" below for one mobile-specific 3D decision)
-- [x] Phase 8 — Conversion design (WhatsApp/Call/Directions CTAs, product inquiry links)
-- [~] Phase 9 — Accessibility & performance (skip link, focus states, reduced-motion support, frameloop gating done; full Lighthouse pass not yet run)
-- [ ] Phase 10 — SEO (meta/OG/structured data not yet added)
-- [~] Phase 11 — Visual QA pass (desktop verified section-by-section in browser; mobile verified for layout, 3D intentionally falls back below 560px — see below)
-- [ ] Final quality gate / production build verification
+- [x] Phase 6 — Product data architecture (`src/data/products.ts`, rebuilt for the real catalog — see Rebrand)
+- [x] Phase 7 — Responsive design (desktop + mobile verified; see "Known issue" below for one mobile-specific 3D decision)
+- [x] Phase 8 — Conversion design (WhatsApp CTAs, product inquiry links)
+- [~] Phase 9 — Accessibility & performance (skip link, focus states, reduced-motion support, frameloop gating, route/scene code-splitting done; full Lighthouse pass not yet run)
+- [x] Phase 10 — SEO (title/description/OG meta added, favicon added)
+- [x] Phase 11 — Visual QA pass (desktop + mobile verified section-by-section in browser after rebrand; production build passes)
+
+## Rebrand phase progress (2026-09-12)
+
+- [x] Removed black/gold theme; new white/blue/lime/navy design tokens
+- [x] Removed computer accessories, financial services, gaming sections/categories/copy
+- [x] Business name corrected everywhere to "ABD Mobile Accessories"
+- [x] Centralized WhatsApp config + dynamic per-product messages + floating WhatsApp button
+- [x] Official 14-product catalog with exact prices, real photos where supplied, honest placeholders elsewhere
+- [x] Shop page (search + category filters) and Product Detail page, with routing
+- [x] Back Sheet 3D showcase with a real design texture-mapped onto the phone
+- [x] Production build verified (`npm run build` succeeds, route/scene code-split)
+- [ ] Store address / Google Maps / social links — not provided this round, left blank (see TODO.md)
 
 ## Known issue — 3D hero/showcase disabled below 560px viewport width
 

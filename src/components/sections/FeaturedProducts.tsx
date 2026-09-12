@@ -10,14 +10,14 @@ export function FeaturedProducts() {
   const products = getFeaturedProducts()
 
   return (
-    <section id="products" className={styles.section}>
+    <section id="featured" className={styles.section}>
       <div className="container">
         <div className={styles.headRow}>
-          <SectionHeading eyebrow="Featured" title="This month's standouts">
-            A short list of what customers are reaching for most right now.
+          <SectionHeading eyebrow="Featured" title="What customers reach for most">
+            A short list of our most popular accessories.
           </SectionHeading>
-          <Button as="a" href="#contact" variant="ghost" icon={<ArrowRight size={16} strokeWidth={1.75} />}>
-            View all categories
+          <Button as="link" to="/shop" variant="ghost" icon={<ArrowRight size={16} strokeWidth={1.75} />}>
+            View all products
           </Button>
         </div>
 

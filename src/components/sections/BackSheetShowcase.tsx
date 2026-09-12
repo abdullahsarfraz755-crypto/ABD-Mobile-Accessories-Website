@@ -1,25 +1,31 @@
-import { useCallback, useLayoutEffect, useRef, useState } from 'react'
-import styles from './ProductShowcase3D.module.css'
-import { ShowcaseScene } from '../../three/ShowcaseScene'
+import { lazy, Suspense, useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { ArrowRight } from 'lucide-react'
+import styles from './BackSheetShowcase.module.css'
+import { ScenePoster } from '../../three/ScenePoster'
 import { useScrollProgress } from '../../hooks/useScrollProgress'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { Button } from '../ui/Button'
+
+const ShowcaseScene = lazy(() =>
+  import('../../three/ShowcaseScene').then((m) => ({ default: m.ShowcaseScene })),
+)
 
 const STAGES = [
   {
-    title: 'Precision Fit',
-    body: 'Every edge is measured against the device it protects — ports, buttons, and cameras line up exactly.',
+    title: 'Real Designs',
+    body: 'Dozens of ready-made back sheet designs — from world maps to portraits to seasonal art.',
   },
   {
-    title: 'Premium Materials',
-    body: 'Finishes that feel as good under your thumb as they look on a shelf — no brittle plastics, no shortcuts.',
+    title: 'Made For Your Phone',
+    body: 'Cut and applied to fit the back of your iPhone or Android device, camera cutout included.',
   },
   {
-    title: 'Everyday Durability',
-    body: 'Tested against the reality of pockets, bags, and daily commutes — built to be lived with, not just looked at.',
+    title: 'See It Before You Buy',
+    body: 'All models available — message us on WhatsApp and we’ll show you the full design catalog.',
   },
 ]
 
-export function ProductShowcase3D() {
+export function BackSheetShowcase() {
   const wrapperRef = useRef<HTMLElement>(null)
   const [wrapperEl, setWrapperEl] = useState<HTMLElement | null>(null)
   const [stage, setStage] = useState(0)
@@ -34,15 +40,17 @@ export function ProductShowcase3D() {
   const progressRef = useScrollProgress(wrapperEl, STAGES.length, handleStageChange, reducedMotion)
 
   return (
-    <section id="showcase" ref={wrapperRef} className={styles.wrapper}>
+    <section id="back-sheet" ref={wrapperRef} className={styles.wrapper}>
       <div className={styles.sticky}>
         <div className={styles.canvasLayer}>
-          <ShowcaseScene progressRef={progressRef} sectionEl={wrapperEl} />
+          <Suspense fallback={<ScenePoster />}>
+            <ShowcaseScene progressRef={progressRef} sectionEl={wrapperEl} />
+          </Suspense>
         </div>
 
         <div className={['container', styles.overlay].join(' ')}>
           <div className={styles.headWrap}>
-            <span className="eyebrow">3D Showcase</span>
+            <span className="eyebrow">Back Sheet Showcase</span>
           </div>
 
           <div className={styles.captions}>
@@ -70,6 +78,12 @@ export function ProductShowcase3D() {
                 <span />
               </span>
             ))}
+          </div>
+
+          <div className={styles.ctaRow}>
+            <Button as="link" to="/product/back-sheet" variant="accent" icon={<ArrowRight strokeWidth={1.75} />}>
+              View Back Sheet Designs
+            </Button>
           </div>
         </div>
       </div>

@@ -1,167 +1,194 @@
 /**
- * Sample catalog data. Prices are illustrative placeholders (PKR) so the
- * pricing UI (discount badges, strike-through, etc.) has something real to
- * render — replace with actual inventory before launch. No technical
- * specifications are claimed; descriptions stay general on purpose.
+ * OFFICIAL CATALOG — supplied by the business owner. Names and prices are
+ * authoritative and must not be changed, and no additional products,
+ * specifications, reviews, or stock counts may be invented.
  *
- * `image` is left undefined for every entry: no product photography was
- * supplied, so ProductCard renders a designed placeholder tile instead of a
- * fake stock photo. Add a real image path once photography is available.
+ * `images` lists real product photography where the owner supplied it
+ * (see /public/assets/products). Where `images` is empty, `comingSoon` is
+ * true and the UI shows an honest "Product image coming soon" placeholder
+ * instead of a fabricated photo.
  */
 
-export type Availability = 'in-stock' | 'low-stock' | 'out-of-stock'
-export type Badge = 'New' | 'Bestseller' | 'Limited'
+export type Condition = 'Original'
 
 export interface Product {
   id: string
   name: string
+  variant?: string
   categoryId: string
-  description: string
   price: number
-  oldPrice?: number
-  image?: string
+  availabilityNote?: string
+  condition?: Condition
+  images: string[]
+  comingSoon?: boolean
   featured?: boolean
-  badge?: Badge
-  availability: Availability
 }
 
 export const CURRENCY = 'PKR'
 
 export const PRODUCTS: Product[] = [
   {
-    id: 'case-aegis-clear',
-    name: 'Aegis Clear Case',
-    categoryId: 'phone-cases',
-    description: 'Slim transparent case with reinforced corners for everyday protection.',
-    price: 1499,
-    oldPrice: 1899,
+    id: 'back-pouch',
+    name: 'Back Pouch',
+    categoryId: 'back-pouches',
+    price: 499,
+    availabilityNote: 'All Models Available',
+    images: [],
+    comingSoon: true,
+  },
+  {
+    id: 'back-sheet',
+    name: 'iPhone & Android Back Sheet',
+    categoryId: 'back-sheets',
+    price: 499,
+    availabilityNote: 'All Models Available',
+    images: [
+      '/assets/products/back-sheet/design-2-map-color.jpg',
+      '/assets/products/back-sheet/design-1-map-mono.jpg',
+      '/assets/products/back-sheet/design-3-portraits.jpg',
+      '/assets/products/back-sheet/design-4-portrait-duo.jpg',
+      '/assets/products/back-sheet/design-5-brother-hand.jpg',
+      '/assets/products/back-sheet/design-6-cherry-blossom.jpg',
+      '/assets/products/back-sheet/design-7-brother-repeat.jpg',
+    ],
     featured: true,
-    badge: 'Bestseller',
-    availability: 'in-stock',
   },
   {
-    id: 'case-noir-leather',
-    name: 'Noir Leather Case',
-    categoryId: 'phone-cases',
-    description: 'Textured leatherette finish with a soft-touch matte grip.',
-    price: 2299,
+    id: 'front-glass',
+    name: 'iPhone Borderless Front Glass',
+    categoryId: 'phone-protection',
+    price: 1500,
+    availabilityNote: 'All Models Available',
+    images: [
+      '/assets/products/front-glass/borderless-glass-2.jpg',
+      '/assets/products/front-glass/borderless-glass-1.jpg',
+    ],
     featured: true,
-    badge: 'New',
-    availability: 'in-stock',
   },
   {
-    id: 'screen-guard-glass',
-    name: '9H Tempered Glass Guard',
-    categoryId: 'screen-protectors',
-    description: 'Case-friendly edges with an oleophobic coating for smudge resistance.',
-    price: 699,
-    oldPrice: 999,
-    availability: 'in-stock',
+    id: 'headphone-p9',
+    name: 'Headphone P9',
+    categoryId: 'airbuds-audio',
+    price: 2250,
+    images: ['/assets/products/headphone-p9/headphone-p9.jpg'],
+    featured: true,
   },
   {
-    id: 'charger-fastcharge-33w',
-    name: 'FastCharge 33W Adapter',
+    id: 'google-pixel-adapter-30w',
+    name: 'Google Pixel Adapter 30W',
     categoryId: 'chargers',
-    description: 'Compact wall adapter with intelligent overcharge protection.',
-    price: 2199,
+    price: 4500,
+    condition: 'Original',
+    images: [
+      '/assets/products/google-pixel-adapter/adapter-box.jpg',
+      '/assets/products/google-pixel-adapter/adapter-front.jpg',
+      '/assets/products/google-pixel-adapter/adapter-back.jpg',
+    ],
     featured: true,
-    badge: 'Bestseller',
-    availability: 'in-stock',
   },
   {
-    id: 'charger-wireless-pad',
-    name: 'Aura Wireless Charging Pad',
-    categoryId: 'chargers',
-    description: 'Slim charging pad with a soft ambient LED ring.',
-    price: 2899,
-    badge: 'New',
-    availability: 'low-stock',
+    id: 'google-pixel-cable-30w',
+    name: 'Google Pixel Cable 30W',
+    categoryId: 'cables',
+    price: 1500,
+    condition: 'Original',
+    images: [
+      '/assets/products/google-pixel-cable/cable-box.jpg',
+      '/assets/products/google-pixel-cable/cable-1.jpg',
+    ],
   },
   {
-    id: 'cable-braided-usbc',
-    name: 'Braided USB-C Cable',
-    categoryId: 'data-cables',
-    description: 'Woven nylon jacket built to resist daily wear and tangling.',
-    price: 799,
-    availability: 'in-stock',
+    id: 'ring-light-26cm',
+    name: 'Ring Light 26cm',
+    categoryId: 'creator-accessories',
+    price: 1250,
+    images: ['/assets/products/ring-light/ring-light-box.jpg'],
   },
   {
-    id: 'airbuds-pulse-pro',
-    name: 'Pulse Pro Air Buds',
-    categoryId: 'air-buds',
-    description: 'True wireless earbuds with a pocket-sized charging case.',
-    price: 4499,
-    oldPrice: 5499,
-    featured: true,
-    badge: 'Bestseller',
-    availability: 'in-stock',
+    id: 'mic',
+    name: 'Mic',
+    categoryId: 'creator-accessories',
+    price: 3850,
+    images: ['/assets/products/mic/mic-open.jpg', '/assets/products/mic/mic-box.jpg'],
   },
   {
-    id: 'handsfree-clear-call',
-    name: 'ClearCall Handsfree',
-    categoryId: 'handsfree',
-    description: 'Lightweight wired handsfree with an in-line remote and mic.',
-    price: 599,
-    availability: 'in-stock',
+    id: 'airbuds-pro-2-white',
+    name: 'Airbuds Pro 2',
+    variant: 'White',
+    categoryId: 'airbuds-audio',
+    price: 1850,
+    images: [],
+    comingSoon: true,
   },
   {
-    id: 'gaming-trigger-grip',
-    name: 'Trigger Grip Controller Mount',
-    categoryId: 'gaming-accessories',
-    description: 'Ergonomic mobile game trigger mount for extended sessions.',
-    price: 1299,
-    featured: true,
-    badge: 'New',
-    availability: 'in-stock',
-  },
-  {
-    id: 'cooling-fan-icebreeze',
-    name: 'IceBreeze Clip-On Fan',
-    categoryId: 'cooling-fans',
-    description: 'Clip-on phone cooling fan for long gaming sessions.',
-    price: 1799,
-    featured: true,
-    availability: 'in-stock',
-  },
-  {
-    id: 'thumb-sleeve-precision',
-    name: 'Precision Thumb Sleeves',
-    categoryId: 'thumb-sleeves',
-    description: 'Breathable sleeves that keep fingertips fast and sweat-free.',
-    price: 449,
-    availability: 'in-stock',
-  },
-  {
-    id: 'laptop-sleeve-vault',
-    name: 'Vault Laptop Sleeve',
-    categoryId: 'computer-accessories',
-    description: 'Padded protective sleeve with a soft interior lining.',
+    id: 'airbuds-pro-2-black',
+    name: 'Airbuds Pro 2',
+    variant: 'Black',
+    categoryId: 'airbuds-audio',
     price: 2499,
-    availability: 'in-stock',
+    images: [],
+    comingSoon: true,
   },
   {
-    id: 'usb-hub-slim',
-    name: 'Slim Multiport USB Hub',
-    categoryId: 'computer-accessories',
-    description: 'Compact multiport hub for everyday desk and travel use.',
-    price: 3199,
-    badge: 'New',
-    availability: 'low-stock',
+    id: 'magnet-buzzer-white',
+    name: 'Magnet Buzzer',
+    variant: 'White Color + Black Pouch',
+    categoryId: 'mobile-accessories',
+    price: 2850,
+    images: [],
+    comingSoon: true,
   },
   {
-    id: 'popsocket-grip',
-    name: 'Grip & Stand Holder',
-    categoryId: 'other-accessories',
-    description: 'Collapsible grip that doubles as a hands-free media stand.',
-    price: 549,
-    availability: 'in-stock',
+    id: 'magnet-buzzer-black',
+    name: 'Magnet Buzzer',
+    variant: 'Black Color + Black Pouch',
+    categoryId: 'mobile-accessories',
+    price: 3850,
+    images: [],
+    comingSoon: true,
+  },
+  {
+    id: 'airbuds-pro-3',
+    name: 'Airbuds Pro 3',
+    categoryId: 'airbuds-audio',
+    price: 2850,
+    images: [],
+    comingSoon: true,
+  },
+  {
+    id: 'airbuds-pro-5',
+    name: 'Airbuds Pro 5',
+    categoryId: 'airbuds-audio',
+    price: 2550,
+    images: [],
+    comingSoon: true,
   },
 ]
 
-export function getProductsByCategory(categoryId: string) {
-  return PRODUCTS.filter((p) => p.categoryId === categoryId)
+export function getProductById(id: string) {
+  return PRODUCTS.find((p) => p.id === id)
 }
 
 export function getFeaturedProducts() {
   return PRODUCTS.filter((p) => p.featured)
+}
+
+export function getProductsByCategory(categoryId: string) {
+  if (categoryId === 'all') return PRODUCTS
+  return PRODUCTS.filter((p) => p.categoryId === categoryId)
+}
+
+export function searchProducts(query: string) {
+  const q = query.trim().toLowerCase()
+  if (!q) return PRODUCTS
+  return PRODUCTS.filter((p) =>
+    [p.name, p.variant, p.categoryId].filter(Boolean).join(' ').toLowerCase().includes(q),
+  )
+}
+
+export function getRelatedProducts(product: Product, limit = 4) {
+  return PRODUCTS.filter((p) => p.id !== product.id && p.categoryId === product.categoryId).slice(
+    0,
+    limit,
+  )
 }

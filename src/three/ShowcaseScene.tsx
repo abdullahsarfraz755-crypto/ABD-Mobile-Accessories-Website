@@ -35,7 +35,7 @@ export function ShowcaseScene({ progressRef, sectionEl }: ShowcaseSceneProps) {
         <Suspense fallback={null}>
           <PerspectiveCamera makeDefault fov={36} position={[0, 0.3, 6.4]} />
           <ShowcaseCameraRig progressRef={progressRef} reducedMotion={reducedMotion} />
-          <fog attach="fog" args={['#050506', 7, 14]} />
+          <fog attach="fog" args={['#0b1f3a', 7, 14]} />
           <ShowcaseDevice progressRef={progressRef} reducedMotion={reducedMotion} />
         </Suspense>
       </Canvas>

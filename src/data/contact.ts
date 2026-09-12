@@ -1,33 +1,38 @@
 /**
- * PLACEHOLDER CONTACT INFO
- * Per project instructions, no phone number, WhatsApp number, or Maps link
- * has been invented. Replace every "PLACEHOLDER" value below with the real
- * one before launch — see TODO.md.
+ * Single source of truth for contact/WhatsApp info. Every CTA in the app
+ * must read from here — never hard-code the number in a component.
  */
 export const CONTACT = {
   brandName: 'ABD Mobile Accessories',
-  addressLine1: 'Nishat Colony Main Road',
-  addressLine2: 'Front of Rabbani Masjid',
-  city: 'Lahore, Pakistan',
 
-  // TODO: replace with the real WhatsApp number, digits only, country code first (e.g. 923001234567)
-  whatsappNumber: '',
-  // TODO: replace with the real phone number for tel: links
-  phoneNumber: '',
-  // TODO: replace with the real Google Maps share link for this location
+  // Official number, digits only, no leading zero — WhatsApp requires the
+  // country code first.
+  phoneDisplay: '0324 5696942',
+  phoneDial: '03245696942',
+  whatsappNumber: '923245696942',
+
+  // Store address — not currently provided by the owner. Left blank
+  // deliberately rather than invented; fill in when available.
+  addressLine1: '',
+  addressLine2: '',
+  city: '',
   mapsUrl: '',
 
   social: {
-    // TODO: add real profile URLs
     instagram: '',
     facebook: '',
     tiktok: '',
   },
 } as const
 
-export const whatsappHref = (message = "Hi! I'm interested in your accessories.") =>
-  CONTACT.whatsappNumber
-    ? `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(message)}`
-    : undefined
+export function whatsappHref(message: string): string {
+  return `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(message)}`
+}
 
-export const phoneHref = () => (CONTACT.phoneNumber ? `tel:${CONTACT.phoneNumber}` : undefined)
+export function productWhatsappMessage(productName: string): string {
+  return `Hello ${CONTACT.brandName}, I am interested in ${productName}. Please share more details.`
+}
+
+export function phoneHref(): string {
+  return `tel:${CONTACT.phoneDial}`
+}

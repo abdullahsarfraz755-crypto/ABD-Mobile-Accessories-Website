@@ -1,36 +1,30 @@
 .tile {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--space-3);
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background:
-    radial-gradient(120% 120% at 20% 15%, rgba(217, 184, 118, 0.14) 0%, transparent 55%),
-    linear-gradient(155deg, var(--charcoal) 0%, var(--graphite) 100%);
-  border: 1px solid var(--border);
-}
-
-.tile::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    135deg,
-    rgba(245, 243, 238, 0.035) 0px,
-    rgba(245, 243, 238, 0.035) 1px,
-    transparent 1px,
-    transparent 14px
-  );
-  pointer-events: none;
+  background: linear-gradient(155deg, var(--surface) 0%, var(--blue-100) 100%);
+  border: 1px dashed var(--border-strong);
 }
 
 .icon {
-  position: relative;
-  width: 34%;
-  height: 34%;
-  color: var(--gold-300);
-  opacity: 0.85;
+  width: 32%;
+  height: 32%;
+  color: var(--blue-500);
+  opacity: 0.55;
   stroke-width: 1.25;
+}
+
+.label {
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-45);
+  text-align: center;
+  padding-inline: var(--space-4);
 }

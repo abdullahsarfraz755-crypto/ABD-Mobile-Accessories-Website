@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FaInstagram, FaFacebookF, FaTiktok } from 'react-icons/fa6'
 import styles from './Footer.module.css'
 import { CATEGORIES } from '../../data/categories'
@@ -14,9 +15,7 @@ export function Footer() {
             <span className={styles.logo}>
               <span className={styles.logoMark}>ABD</span> Mobile Accessories
             </span>
-            <p className={styles.tagline}>
-              Premium mobile and computer accessories for everyday life in Lahore.
-            </p>
+            <p className={styles.tagline}>Premium mobile accessories for everyday tech.</p>
             <div className={styles.social}>
               <a
                 className={styles.socialLink}
@@ -41,11 +40,13 @@ export function Footer() {
           <div>
             <div className={styles.colTitle}>Categories</div>
             <ul className={styles.list}>
-              {CATEGORIES.slice(0, 6).map((c) => (
-                <li key={c.id}>
-                  <a href="#products">{c.name}</a>
-                </li>
-              ))}
+              {CATEGORIES.filter((c) => c.id !== 'all')
+                .slice(0, 6)
+                .map((c) => (
+                  <li key={c.id}>
+                    <Link to={`/shop?category=${c.id}`}>{c.name}</Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
@@ -53,16 +54,13 @@ export function Footer() {
             <div className={styles.colTitle}>Contact</div>
             <ul className={styles.list}>
               <li>
-                <span>{CONTACT.addressLine1}</span>
+                <span>WhatsApp: {CONTACT.phoneDisplay}</span>
               </li>
               <li>
-                <span>{CONTACT.addressLine2}</span>
+                <a href={`tel:${CONTACT.phoneDial}`}>Call the store</a>
               </li>
               <li>
-                <span>{CONTACT.city}</span>
-              </li>
-              <li>
-                <a href="#contact">Get in touch</a>
+                <Link to="/#contact">Get in touch</Link>
               </li>
             </ul>
           </div>
@@ -72,7 +70,6 @@ export function Footer() {
           <span>
             &copy; {year} {CONTACT.brandName}. All rights reserved.
           </span>
-          <span>Designed &amp; built for a premium in-store experience.</span>
         </div>
       </div>
     </footer>
