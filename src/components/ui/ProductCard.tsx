@@ -4,7 +4,7 @@ import styles from './ProductCard.module.css'
 import { PlaceholderTile } from './PlaceholderTile'
 import type { Product } from '../../data/products'
 import { CATEGORIES } from '../../data/categories'
-import { formatPrice } from '../../lib/format'
+import { formatPrice, discountPercent } from '../../lib/format'
 import { whatsappHref, productWhatsappMessage } from '../../data/contact'
 
 interface ProductCardProps {
@@ -15,11 +15,13 @@ export function ProductCard({ product }: ProductCardProps) {
   const category = CATEGORIES.find((c) => c.id === product.categoryId)
   const displayName = product.variant ? `${product.name} (${product.variant})` : product.name
   const waHref = whatsappHref(productWhatsappMessage(displayName))
+  const discount = product.oldPrice ? discountPercent(product.price, product.oldPrice) : null
 
   return (
     <article className={styles.card}>
       <div className={styles.mediaWrap}>
         {product.condition && <span className={styles.conditionBadge}>{product.condition}</span>}
+        {discount != null && <span className={styles.discountBadge}>-{discount}%</span>}
         <div className={styles.media}>
           {product.images.length > 0 ? (
             <img src={product.images[0]} alt={displayName} loading="lazy" />
@@ -32,11 +34,17 @@ export function ProductCard({ product }: ProductCardProps) {
         {category && <span className={styles.category}>{category.name}</span>}
         <h3 className={styles.name}>{product.name}</h3>
         {product.variant && <span className={styles.variant}>{product.variant}</span>}
+        <p className={styles.desc}>{product.description}</p>
         {product.availabilityNote && (
           <span className={styles.availabilityNote}>{product.availabilityNote}</span>
         )}
         <div className={styles.footer}>
-          <span className={styles.price}>{formatPrice(product.price)}</span>
+          <div className={styles.priceRow}>
+            <span className={styles.price}>{formatPrice(product.price)}</span>
+            {product.oldPrice != null && (
+              <span className={styles.oldPrice}>{formatPrice(product.oldPrice)}</span>
+            )}
+          </div>
           <div className={styles.actions}>
             <Link to={`/product/${product.id}`} className={styles.viewBtn}>
               View Product

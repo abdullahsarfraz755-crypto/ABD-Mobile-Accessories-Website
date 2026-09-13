@@ -119,19 +119,35 @@
   color: var(--signal-live);
 }
 
+.badgeDiscount {
+  background: var(--lime-500);
+  color: var(--navy);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
 .price {
   font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: var(--space-6);
-  display: block;
+}
+
+.oldPrice {
+  font-size: var(--fs-body-lg);
+  color: var(--ink-45);
+  text-decoration: line-through;
 }
 
 .description {
   color: var(--ink-70);
   font-size: var(--fs-body-lg);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
   max-width: 52ch;
 }
 

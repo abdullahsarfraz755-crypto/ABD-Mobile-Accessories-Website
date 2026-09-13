@@ -7,7 +7,7 @@ import { ProductCard } from '../components/ui/ProductCard'
 import { PlaceholderTile } from '../components/ui/PlaceholderTile'
 import { getProductById, getRelatedProducts } from '../data/products'
 import { CATEGORIES } from '../data/categories'
-import { formatPrice } from '../lib/format'
+import { formatPrice, discountPercent } from '../lib/format'
 import { whatsappHref, productWhatsappMessage } from '../data/contact'
 
 export function ProductDetail() {
@@ -32,6 +32,7 @@ export function ProductDetail() {
   const displayName = product.variant ? `${product.name} (${product.variant})` : product.name
   const waHref = whatsappHref(productWhatsappMessage(displayName))
   const related = getRelatedProducts(product)
+  const discount = product.oldPrice ? discountPercent(product.price, product.oldPrice) : null
 
   return (
     <>
@@ -84,9 +85,21 @@ export function ProductDetail() {
                     {product.availabilityNote}
                   </span>
                 )}
+                {discount != null && (
+                  <span className={[styles.badge, styles.badgeDiscount].join(' ')}>
+                    Save {discount}%
+                  </span>
+                )}
               </div>
 
-              <span className={styles.price}>{formatPrice(product.price)}</span>
+              <p className={styles.description}>{product.description}</p>
+
+              <div className={styles.priceRow}>
+                <span className={styles.price}>{formatPrice(product.price)}</span>
+                {product.oldPrice != null && (
+                  <span className={styles.oldPrice}>{formatPrice(product.oldPrice)}</span>
+                )}
+              </div>
 
               <div className={styles.ctaRow}>
                 <Button

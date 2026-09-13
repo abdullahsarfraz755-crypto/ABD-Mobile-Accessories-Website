@@ -11,7 +11,7 @@ interface ShowcaseDeviceProps {
 const COLOR_STAGES = ['#0b63f6', '#4f8dff', '#a3e635'].map((c) => new Color(c))
 
 /** One real back-sheet design, used as the texture on the phone's back panel. */
-const BACK_SHEET_TEXTURE_PATH = '/assets/products/back-sheet/design-2-map-color.jpg'
+const BACK_SHEET_TEXTURE_PATH = '/assets/products/raw/back-sheet/design-2-map-color.jpg'
 
 export function ShowcaseDevice({ progressRef, reducedMotion }: ShowcaseDeviceProps) {
   const groupRef = useRef<Group>(null)
