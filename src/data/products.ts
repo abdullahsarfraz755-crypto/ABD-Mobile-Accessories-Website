@@ -141,9 +141,24 @@ export const PRODUCTS: Product[] = [
     oldPrice: 4800,
     description:
       '10,000mAh power bank with 3 built-in cables — Android, Type-C, and iPhone — so you can charge on the go without carrying separate cables.',
-    images: [],
-    comingSoon: true,
+    images: ['/assets/products/studio/power-bank/power-bank-box.jpg'],
     featured: true,
+  },
+  {
+    id: 'u39-headset',
+    name: 'U39 True Wireless Headset',
+    categoryId: 'airbuds-audio',
+    price: 2250,
+    description: 'True wireless earbuds with a magnetic charging case, quick pairing, and touch controls.',
+    images: ['/assets/products/studio/u39-headset/u39-headset.jpg'],
+  },
+  {
+    id: 'airbuds-pro',
+    name: 'Airbuds Pro',
+    categoryId: 'airbuds-audio',
+    price: 3850,
+    description: 'True wireless earbuds for calls and everyday listening.',
+    images: ['/assets/products/studio/airbuds-pro/airbuds-pro.jpg'],
   },
   {
     id: 'airbuds-pro-2-white',
@@ -152,8 +167,7 @@ export const PRODUCTS: Product[] = [
     categoryId: 'airbuds-audio',
     price: 1850,
     description: 'True wireless earbuds for calls and everyday listening.',
-    images: [],
-    comingSoon: true,
+    images: ['/assets/products/studio/airbuds-pro-2-white/airbuds-pro-2-white.jpg'],
   },
   {
     id: 'airbuds-pro-2-black',
@@ -172,8 +186,7 @@ export const PRODUCTS: Product[] = [
     categoryId: 'mobile-accessories',
     price: 2850,
     description: 'A magnetic mobile accessory, supplied with a matching black pouch.',
-    images: [],
-    comingSoon: true,
+    images: ['/assets/products/studio/magnet-buzzer-white/magnet-buzzer-white.jpg'],
   },
   {
     id: 'magnet-buzzer-black',
@@ -182,8 +195,7 @@ export const PRODUCTS: Product[] = [
     categoryId: 'mobile-accessories',
     price: 3850,
     description: 'A magnetic mobile accessory, supplied with a matching black pouch.',
-    images: [],
-    comingSoon: true,
+    images: ['/assets/products/studio/magnet-buzzer-black/magnet-buzzer-black.jpg'],
   },
   {
     id: 'airbuds-pro-3',

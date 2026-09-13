@@ -3,18 +3,19 @@
 ## Before launch — real info still needed
 - [ ] Store address / Google Maps link (owner has not provided one this round — `CONTACT` fields left blank, no Contact/location map section on the site until supplied)
 - [ ] Social media profile URLs (Instagram/Facebook/TikTok — footer icons currently point to `#`)
-- [ ] Real product photos for: Back Pouch, Power Bank, Airbuds Pro 2 (White & Black), Magnet Buzzer (both variants), Airbuds Pro 3, Airbuds Pro 5 — these currently show an honest "Photo coming soon" placeholder in `src/data/products.ts`. Stock photos were deliberately **not** sourced for these — see "Image sourcing" below.
+- [ ] Real product photos still needed for: Back Pouch, Airbuds Pro 2 Black, Airbuds Pro 3, Airbuds Pro 5 — these show an honest "Photo coming soon" placeholder in `src/data/products.ts`. Stock photos were deliberately **not** sourced for these — searched Daraz for "Airbuds Pro 3/5" and found thousands of unrelated products under the same generic name, confirming there's no single real item to match.
 - [ ] Confirm the picked back-sheet design used in the 3D showcase texture (`design-2-map-color.jpg`) is one the owner wants front-and-center, or swap for another from `/public/assets/products/raw/back-sheet/`
 
-## Image processing (2026-09-13)
+## Image processing (2026-09-13, refined 2026-09-14)
 
 - Raw owner-supplied photos moved to `/public/assets/products/raw/<slug>/` (kept, untouched, as the source of truth).
-- The site now displays a processed version from `/public/assets/products/studio/<slug>/`: center-cropped to a consistent square and given a soft radial vignette that fades busy backgrounds (shop shelving, plastic wrap) toward white — done with a local .NET/PowerShell script (`Add-Type -AssemblyName System.Drawing`), not an AI image tool. **No pixels of the product itself are altered** — this is crop + a white fade overlay, not background removal or relighting.
-- **Honest limitation:** this is not full studio photography. Several photos still show a hand holding the product (inherent to how they were shot) — a vignette can't remove that without fabricating what's underneath, which would misrepresent the product. True background removal would need either a working browser extension (Claude in Chrome wasn't connected this session) or the owner having the products re-shot flat/isolated.
+- The site displays a processed version from `/public/assets/products/studio/<slug>/`: center-cropped to a consistent square, composited onto a soft brand-tinted studio backdrop (not flat white), given a soft grounding shadow, and a mild contrast/clarity boost — done with a local .NET/PowerShell script (`Add-Type -AssemblyName System.Drawing`), not an AI image tool. **No pixels of the product itself are altered** — this is crop + backdrop + shadow + global tone curve, not background removal or relighting.
+- **Honest limitation:** this is not full studio photography. Several photos still show a hand holding the product (inherent to how they were shot) — this treatment can't remove that without fabricating what's underneath, which would misrepresent the product. True background removal would need either a working browser extension (Claude in Chrome wasn't connected this session) or the owner having the products re-shot flat/isolated.
+- **QA note:** while wiring up this batch, one photo (U39 headset) was initially mismatched with a duplicate Magnet Buzzer White photo due to a mislabeling error while reviewing 7 images at once — caught by cross-checking the live rendered page against the source photo, not assumed correct. Worth a full visual pass (`/shop`, every product) after any future bulk photo import, since a wrong-but-plausible-looking product photo is exactly the kind of error that's easy to miss.
 
-## Image sourcing (2026-09-13)
+## Image sourcing (2026-09-13/14)
 
-For the 7 products with no owner photo, no stock image was sourced online. Reasoning: these are generic reseller names (Airbuds Pro 2/3/5, Magnet Buzzer, Power Bank) with no stated brand/model — there is no way to confirm any web image is the *exact* item this store sells rather than a similar-looking unit from a different factory, so per the standing "no random similar product" rule they default to the "Photo coming soon" placeholder instead.
+For products with no owner photo, no stock image is used unless the owner explicitly confirms one (e.g. Power Bank, Magnet Buzzer White/Black, U39, and "Airbuds Pro" were all owner-supplied on 2026-09-13). For the remaining Airbuds Pro 2 Black / Pro 3 / Pro 5, these are generic reseller names with no stated brand/model — a Daraz search for "Airbuds Pro 5" alone returned 2,710 different products from different brands under that name, so there's no way to confirm any single web image is the *exact* item this store sells. Per the standing "no random similar product" rule, they stay as the "Photo coming soon" placeholder.
 
 ## Rebrand completed this session (2026-09-12)
 - [x] Removed the black/graphite/gold identity entirely — new white/blue/lime/navy system
